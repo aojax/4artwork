@@ -82,3 +82,9 @@ Git 集成负责自动部署，GitHub Actions 负责检查与保存构建产物�
 ## 后续服务接入
 
 云端 AI 工作台宜独立于官网运行，先落实账号、按用途授权、存储、队列、进度、失败恢复及费用展示。可逐步使用 `app.4art.work`，不要在静态客户端暴露服务密钥。优先完整验证真实素材到图文/视频的单条流程。
+
+### Cloudflare Workers Git 自动发布
+
+部署命令使用 `npx wrangler deploy`。仓库的 `wrangler.jsonc` 已配置自动构建与链接检查，部署前会生成 `dist`，无需另设构建命令。PowerShell 发布脚本复用同一流程。
+
+若日志出现 `assets.directory ... dist ... does not exist`，请确认部署使用包含自动构建配置的最新提交，再重试部署。
