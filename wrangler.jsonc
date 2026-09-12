@@ -1,0 +1,11 @@
+{
+  "name": "4artwork",
+  "account_id": "a132443028a241f0acfd3706a5fdd9f7",
+  "compatibility_date": "2026-09-12",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

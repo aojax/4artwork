@@ -8,3 +8,4 @@ output/
 .playwright-cli/
 .DS_Store
 *.log
+.wrangler/

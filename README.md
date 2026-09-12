@@ -43,7 +43,25 @@ npm run preview
 
 从 Obsidian 发布前，需要移除内部材料、转换双链、确认来源和素材使用范围。不要直接同步整个知识库。机构头衔、合作关系、数据覆盖和商业能力必须有公开依据后再加入。
 
-## Cloudflare Pages
+## PowerShell 发布（Cloudflare Workers 静态托管）
+
+当前发布方式使用已授权的 Cloudflare Workers，将 `dist` 作为静态资源托管。项目配置在 `wrangler.jsonc`，不运行服务端 AI。
+
+```powershell
+.\scripts\publish.ps1
+```
+
+脚本会依次构建、检查站内链接、发布。默认站点地址为 `https://4artwork.aojax-lin.workers.dev`，规范链接和 sitemap 会随之生成。需要本机 Wrangler 已登录且具备 Workers 发布权限。
+
+以后绑定 `4art.work` 并确认 DNS 与证书生效后，可运行：
+
+```powershell
+.\scripts\publish.ps1 -SiteUrl 'https://4art.work'
+```
+
+`-SiteUrl` 只控制网页元数据与 sitemap，不会绑定域名。GitHub Actions 当前负责检查构建，不自动发布；无需在仓库保存任何登录凭据。
+
+## Cloudflare Pages（可选迁移方案）
 
 连接 GitHub 的 `aojax/4artwork` 仓库，使用：
 
