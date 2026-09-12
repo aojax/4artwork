@@ -1,0 +1,28 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+interface Props { title?: string; description?: string; }
+const {title = '让艺术与智能，共同生长', description = '4ART.WORK，林奥杰的艺术与人工智能研究实践空间。探索 CSC 实验室、AI 奥杰创作工作室、确源与 DeepArt。'} = Astro.props;
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · 4ART.WORK</title><meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f5ef" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:type" content="website" /><meta property="og:title" content={`${title} · 4ART.WORK`} /><meta property="og:description" content={description} /><meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} /><meta property="og:locale" content="zh_CN" />
+    <ClientRouter fallback="swap" />
+  </head>
+  <body id="top">
+    <a href="#main" class="skip-link">跳至正文</a>
+    <Nav />
+    <main id="main"><slot /></main>
+    <Footer />
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

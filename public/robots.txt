@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://4art.work/sitemap-index.xml

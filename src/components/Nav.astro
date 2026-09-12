@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+const path = Astro.url.pathname;
+const links = [{href:'/csc-art-ai/',label:'CSC 实验室'},{href:'/queyuan/',label:'确源'},{href:'/deepart/',label:'DeepArt'},{href:'/#journal',label:'研究与思考'},{href:'/#about',label:'关于'}];
+---
+<header class="site-header">
+  <a href="/" class="wordmark" aria-label="4ART.WORK 主页">4ART<span class="brand-dot">.</span><span class="wordmark-work">WORK</span><span class="logo-star">✳</span></a>
+  <nav aria-label="主导航" id="main-nav">
+    {links.map(link => <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>{link.label}</a>)}
+    <a href="/csc-art-ai/#studio" class="nav-cta">遇见 AI 奥杰 <Icon name="northeast" size={15} /></a>
+  </nav>
+  <button class="menu-toggle" aria-label="打开导航" aria-expanded="false" aria-controls="main-nav"><Icon name="menu" /></button>
+</header>
