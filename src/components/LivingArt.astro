@@ -1,9 +1,7 @@
 ---
-import { Image } from 'astro:assets';
-import art from '../assets/living-form.png';
 interface Props { hero?: boolean; class?: string; }
 const { hero = false, class: className = '' } = Astro.props;
 ---
 <div class:list={['living-art', className]}>
-  <Image src={art} alt="生长中的褶皱：朱橙与青瓷色的有机环带，像花与纸雕共同舒展。AI 生成概念艺术。" widths={[480, 800, 1200, 1536]} sizes={hero ? '(max-width: 760px) 100vw, 60vw' : '(max-width: 760px) 100vw, 50vw'} format="webp" quality={85} loading={hero ? 'eager' : 'lazy'} fetchpriority={hero ? 'high' : 'auto'} />
+  <img src="/art/living-form-1536.webp" srcset="/art/living-form-480.webp 480w, /art/living-form-800.webp 800w, /art/living-form-1200.webp 1200w, /art/living-form-1536.webp 1536w" alt="生长中的褶皱：朱橙与青瓷色的有机环带，像花与纸雕共同舒展。AI 生成概念艺术。" sizes={hero ? '(max-width: 760px) 100vw, 60vw' : '(max-width: 760px) 100vw, 50vw'} width="1536" height="1024" decoding="async" loading={hero ? 'eager' : 'lazy'} fetchpriority={hero ? 'high' : 'auto'} />
 </div>

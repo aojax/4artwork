@@ -7,6 +7,15 @@ const htmlFiles = (await walk(root)).filter(f=>f.endsWith('.html'));
 const failures=[]; let checked=0;
 for(const file of htmlFiles){
   const html=await readFile(file,'utf8');
+  if (/\/_image\//.test(html)) failures.push({page:file,error:'Static deployment must not depend on the runtime image endpoint'});
+  for (const set of html.matchAll(/\bsrcset="([^"]+)"/g)) {
+    for (const candidate of set[1].split(',')) {
+      const asset=candidate.trim().split(/\s+/)[0];
+      if (!asset.startsWith('/')) continue;
+      try { await stat(join(root,asset)); checked++; }
+      catch { failures.push({page:file,link:asset,error:'Missing responsive image'}); }
+    }
+  }
   const pagePath=file.slice(root.length).replaceAll('\\','/').replace(/index\.html$/,'');
   for(const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)){
     const raw=match[1]; if(/^(https?:|mailto:|data:|blob:|tel:)/.test(raw))continue;
