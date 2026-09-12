@@ -1,5 +1,5 @@
 param(
-    [string]$SiteUrl = 'https://4artwork.aojax-lin.workers.dev'
+    [string]$SiteUrl = 'https://www.4art.work'
 )
 
 $ErrorActionPreference = 'Stop'
